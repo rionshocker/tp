@@ -92,9 +92,18 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
-        String expected = ALICE.getName() + " Phone: "
-                + ALICE.getPhone() + " Email: " + ALICE.getEmail() + " Address: " + ALICE.getAddress()
-                + " Remark: " + ALICE.getRemark() + " Tags: " + ALICE.getTags();
-        assertEquals(expected, ALICE.toString());
+        final StringBuilder builder = new StringBuilder();
+        builder.append(ALICE.getName())
+                .append(" Phone: ")
+                .append(ALICE.getPhone())
+                .append(" Email: ")
+                .append(ALICE.getEmail())
+                .append(" Address: ")
+                .append(ALICE.getAddress())
+                .append(" Remark: ")
+                .append(ALICE.getRemark())
+                .append(" Tags: ");
+        ALICE.getTags().forEach(builder::append);
+        assertEquals(builder.toString(), ALICE.toString());
     }
 }
